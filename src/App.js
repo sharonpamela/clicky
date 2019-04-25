@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import ChildComponent from "./ChildComponent"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            count: 0
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick() {
+        // setState can be passed either an object replacing current state or
+        // a function that returns an object to replace current state
+        this.setState(prevState => ({ count: prevState.count + 1 }) );
+    }
+
+    render() {
+        return (
+            <div>
+                <h1>{this.state.count}</h1>
+                <button onClick={this.handleClick}>Change!</button>
+                <ChildComponent state={this.state} />
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App

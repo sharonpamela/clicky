@@ -1,5 +1,4 @@
 import React from "react"
-import ChildComponent from "./ChildComponent"
 
 class App extends React.Component {
     constructor() {
@@ -21,7 +20,6 @@ class App extends React.Component {
             <div>
                 <h1>{this.state.count}</h1>
                 <button onClick={this.handleClick}>Change!</button>
-                <ChildComponent state={this.state} />
             </div>
         )
     }
